@@ -1,0 +1,29 @@
+
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+}
+
+h2 {
+    padding: 0.2em;
+    border-bottom: 1px solid black;
+}
+
+.container {
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.seriesContainer {
+    width: 20em;
+    padding: 1em;
+    border-radius: 6px;
+    box-shadow: rgba(44, 44, 49, 0.2) 0px 7px 29px 0px;
+    /*background: #c3c1c1;*/
+}

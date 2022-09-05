@@ -15,6 +15,8 @@ async function getData () {
     const response = await fetch(url);
     const results = await response.json();
 
+    htmlContainer.innerHTML= "";
+
     console.log(results);
 
         for (i = 0; i < results.length; i++) {
@@ -24,16 +26,16 @@ async function getData () {
             let showAirTime = results[i].airtime;
             let showRating = results[i].rating.average;
             let showSummary = results[i].summary;
-
-
+            let showId = results[i].id
 
             htmlContainer.innerHTML += `<div class="seriesContainer">
-                            <h2>${showTitle}</h2>
-                            <p>Release date: ${showAirDate}</p>
-                            <p>Air time: ${showAirTime}</p>
-                            <p>Rating: ${showRating}</p>
-                            <p>Rating: ${showSummary}</p>
-                            </div>`;
+                                        <h2>${showTitle}</h2>
+                                        <a href="details${showId}">More info</a>
+                                        <p><strong>Release date:</strong> ${showAirDate}</p>
+                                        <p><strong>Air time:</strong> ${showAirTime}</p>
+                                        <p><strong>Rating:</strong> ${showRating}</p>
+                                        <p>${showSummary}</p>
+                                        </div>`;
 
             if (i === 2) {
 
@@ -48,8 +50,8 @@ async function getData () {
     catch (error) {
 
         htmlContainer.innerHTML += `<div class="error">
-            An error has occured. Try again or contact us for assistance
-        </div>`;
+                                    An error has occured. Try again or contact us for assistance
+                                    </div>`;
     }
 
 }
