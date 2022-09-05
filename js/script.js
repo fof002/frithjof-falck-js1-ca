@@ -1,9 +1,8 @@
-
+import {seriesId} from './seriesid.js';
 
 const htmlContainer = document.querySelector(".container");
 
 //API
-const seriesId = 10;
 const url = `https://api.tvmaze.com/seasons/${seriesId}/episodes`;
 
 async function getData () {
