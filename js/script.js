@@ -30,14 +30,14 @@ async function getData () {
 
             htmlContainer.innerHTML += `<div class="seriesContainer">
                                         <h2>${showTitle}</h2>
-                                        <a href="details${showId}">More info</a>
+                                        <a href="details.html?id=${showId}">More info</a>
                                         <p><strong>Release date:</strong> ${showAirDate}</p>
                                         <p><strong>Air time:</strong> ${showAirTime}</p>
                                         <p><strong>Rating:</strong> ${showRating}</p>
                                         <p>${showSummary}</p>
                                         </div>`;
 
-            if (i === 2) {
+            if (i === 5) {
 
                 break;
 
@@ -50,7 +50,7 @@ async function getData () {
     catch (error) {
 
         htmlContainer.innerHTML += `<div class="error">
-                                    An error has occured. Try again or contact us for assistance
+                                    An error occured
                                     </div>`;
     }
 

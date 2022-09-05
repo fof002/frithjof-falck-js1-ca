@@ -3,6 +3,19 @@ nav {
     display: flex;
     flex-direction: row;
     gap: 1em;
+    background: gray;
+}
+
+nav a {
+
+    color: black;
+    text-decoration: none;
+    padding: 0.5em;
+
+}
+nav a:hover {
+
+    background: lightgray;
 
 }
 
@@ -13,10 +26,12 @@ h2 {
 
 .container {
     display: flex;
+    flex-wrap: wrap;
+    align-items: left;
     gap: 2em;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
-    justify-content: center;
+    justify-content: left;
     margin-top: 1em;
 }
 
