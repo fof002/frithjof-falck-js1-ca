@@ -1,4 +1,4 @@
-import { seriesId } from './seriesid.js';
+const seriesId = 10;
 
 const htmlContainer = document.querySelector(".showDetails");
 
@@ -6,9 +6,9 @@ const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString);
 
-const id = params.get("id");
+const queryId = params.get("id");
 
-const url = `https://api.tvmaze.com/seasons/${seriesId}/episodes`;
+const url = `https://api.tvmaze.com/shows/1/episodes`;
 
 async function getDetails () {
 
@@ -21,35 +21,10 @@ async function getDetails () {
 
     htmlContainer.innerHTML= "";
 
-    console.log(results);
+    console.log(results[i]);
 
-        for (i = 0; i < results.length; i++) {
+            htmlContainer.innerHTML += results[i];
 
-            let showAirDate = results[i].airdate;
-            let showTitle = results[i].name;
-            let showAirTime = results[i].airtime;
-            let showRating = results[i].rating.average;
-            let showSummary = results[i].summary;
-            let showId = results[i].id
-
-            //Create the HTML
-
-            htmlContainer.innerHTML += `<div class="seriesContainer">
-                                        <h2>${showTitle}</h2>
-                                        <a href="details.html?id=${showId}">More info</a>
-                                        <p><strong>Release date:</strong> ${showAirDate}</p>
-                                        <p><strong>Air time:</strong> ${showAirTime}</p>
-                                        <p><strong>Rating:</strong> ${showRating}</p>
-                                        <p>${showSummary}</p>
-                                        </div>`;
-
-            if (i === 5) {
-
-                break;
-
-            }
-        
-        }
 
     }
 
@@ -62,4 +37,4 @@ async function getDetails () {
 
 }
 
-getData();
+getDetails();
