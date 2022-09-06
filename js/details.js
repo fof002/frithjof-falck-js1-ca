@@ -20,8 +20,6 @@ async function getData () {
     const json = await response.json();
     const books = json.results;
 
-    htmlContainer.innerHTML= "";
-
         for (let i = 0; i < books.length; i++) {
 
             console.log(books);
@@ -29,6 +27,14 @@ async function getData () {
             htmlContainer.innerHTML += `<li><a href="${books[i].url}">${books[i].book_title}</a></li>`;  
 
         }      
+
+        if (!htmlContainer.innerHTML) {
+ 
+            htmlContainer.innerHTML += `<div class="error">
+            There are no book reviews for this author
+            </div>`;
+
+        }
 
     }
 

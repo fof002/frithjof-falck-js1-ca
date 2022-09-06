@@ -37,7 +37,7 @@ async function getData () {
                                         <img src="${image}" style="width:100%;" alt="${bookTitle}">
                                         </div>
                                         <div>
-                                        <a href = "details.html?author=${authorWithPlus}">More info</a>
+                                        <a href = "details.html?author=${authorWithPlus}">Browse reviews</a>
                                         <p><strong>Published by:</strong> ${publisher}</p>
                                         <p><strong>Author:</strong> ${author}</p>
                                         <p>${description}</p>
