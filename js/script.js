@@ -1,8 +1,8 @@
 const htmlContainer = document.querySelector(".container");
 
-//API
+const apiKey = "L6FHpBNZeY5eGuDmGZJc3fnWINLlJraB";
 
-const url = `https://api.tvmaze.com/seasons/1/episodes`;
+const url = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=`+ apiKey;
 
 async function getData () {
 
@@ -11,35 +11,38 @@ async function getData () {
     try {
 
     const response = await fetch(url);
-    const results = await response.json();
+    const json = await response.json();
+    const books = json.results.books;
 
     htmlContainer.innerHTML= "";
 
-    console.log(results);
+    console.log(books);
 
-        for (i = 0; i < results.length; i++) {
+        for (i = 0; i < books.length; i++) {
 
-            let showAirDate = results[i].airdate;
-            let showTitle = results[i].name;
-            let showAirTime = results[i].airtime;
-            let showRating = results[i].rating.average;
-            let showSummary = results[i].summary;
-            let showId = results[i].id
+            let bookTitle = books[i].title;
+            let bookIsbn = books[i].primary_isbn13;
+            let publisher = books[i].publisher;
+            let description = books[i].description;
+            let author = books[i].author;
+            let image = books [i].book_image;
+            //add plus as space for the link so you ca get more from the author on details.html
+            let space = / /g;
+            let authorWithPlus = author.replace(space, "+");
 
-            htmlContainer.innerHTML += `<div class="seriesContainer">
-                                        <h2>${showTitle}</h2>
-                                        <a href="details.html?id=${showId}">More info</a>
-                                        <p><strong>Release date:</strong> ${showAirDate}</p>
-                                        <p><strong>Air time:</strong> ${showAirTime}</p>
-                                        <p><strong>Rating:</strong> ${showRating}</p>
-                                        <p>${showSummary}</p>
+
+            htmlContainer.innerHTML += `<div class="bookContainer">
+                                        <div>
+                                        <h2>${bookTitle}</h2>
+                                        <img src="${image}" style="width:100%;" alt="${bookTitle}">
+                                        </div>
+                                        <div>
+                                        <a href = "details.html?author=${authorWithPlus}">More info</a>
+                                        <p><strong>Published by:</strong> ${publisher}</p>
+                                        <p><strong>Author:</strong> ${author}</p>
+                                        <p>${description}</p>
+                                        </div>
                                         </div>`;
-
-            if (i === 5) {
-
-                break;
-
-            }
         
         }
 

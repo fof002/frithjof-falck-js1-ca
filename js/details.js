@@ -1,40 +1,44 @@
-const seriesId = 10;
-
-const htmlContainer = document.querySelector(".showDetails");
+const htmlContainer = document.querySelector(".books");
 
 const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString);
 
-const queryId = params.get("id");
+const queryId = params.get("author");
 
-const url = `https://api.tvmaze.com/shows/1/episodes`;
+const apiKey = "L6FHpBNZeY5eGuDmGZJc3fnWINLlJraB";
 
-async function getDetails () {
+const url = `https://api.nytimes.com/svc/books/v3/reviews.json?author=${queryId}&api-key=`+ apiKey;
+
+async function getData () {
 
     htmlContainer.classList.add("loader");
 
     try {
 
     const response = await fetch(url);
-    const results = await response.json();
+    const json = await response.json();
+    const books = json.results;
 
     htmlContainer.innerHTML= "";
 
-    console.log(results[i]);
+        for (let i = 0; i < books.length; i++) {
 
-            htmlContainer.innerHTML += results[i];
+            console.log(books);
 
+            htmlContainer.innerHTML += `<li><a href="${books[i].url}">${books[i].book_title}</a></li>`;  
+
+        }      
 
     }
 
     catch (error) {
 
         htmlContainer.innerHTML += `<div class="error">
-                                    An error occured
+                                    There are no book reviews for this author
                                     </div>`;
     }
 
 }
 
-getDetails();
+getData();
