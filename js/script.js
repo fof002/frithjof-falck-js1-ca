@@ -1,8 +1,8 @@
 const htmlContainer = document.querySelector(".container");
 
-const apiKey = "L6FHpBNZeY5eGuDmGZJc3fnWINLlJraB";
+const apiKey = "dc408f53f9cadd6cd671679df3405adf";
 
-const url = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=`+ apiKey;
+const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
 
 async function getData () {
 
@@ -12,11 +12,10 @@ async function getData () {
 
     const response = await fetch(url);
     const json = await response.json();
-    const books = json.results.books;
 
     htmlContainer.innerHTML= "";
 
-    console.log(books);
+    console.log(json.results);
 
         for (i = 0; i < books.length; i++) {
 
@@ -37,7 +36,7 @@ async function getData () {
                                         <img src="${image}" style="width:100%;" alt="${bookTitle}">
                                         </div>
                                         <div>
-                                        <a href = "details.html?author=${authorWithPlus}">Browse reviews</a>
+                                        <a href = "details.html?author=${authorWithPlus}">Search for reviews</a>
                                         <p><strong>Published by:</strong> ${publisher}</p>
                                         <p><strong>Author:</strong> ${author}</p>
                                         <p>${description}</p>
