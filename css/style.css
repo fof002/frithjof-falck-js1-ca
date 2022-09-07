@@ -6,16 +6,13 @@ nav {
 }
 
 nav a {
-
     color: black;
     text-decoration: none;
     padding: 0.5em;
-
 }
+
 nav a:hover, .active {
-
     background: lightgray;
-
 }
 
 h2 {
@@ -26,7 +23,7 @@ h2 {
 .container {
     display: flex;
     flex-wrap: wrap;
-    align-items: left;
+    align-items: start;
     gap: 2em;
     flex-direction: row;
     width: 100%;
@@ -34,13 +31,43 @@ h2 {
     margin-top: 1em;
 }
 
-.bookContainer {
+.movieContainer {
     width: 20em;
     padding: 1em;
     border-radius: 6px;
     box-shadow: rgba(44, 44, 49, 0.2) 0px 7px 29px 0px;
+    background: lightgray;
+}
+
+.movieDetails {
+    width: min(51em,90vw);
+    padding: 1em;
+}
+
+.detailsContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: start;
     gap: 2em;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.loader {
+    animation: loading 1s linear infinite;
+    font-size: 3rem;
+    position: absolute;
+    left: 37%;
+    top: 20%;
+  }
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

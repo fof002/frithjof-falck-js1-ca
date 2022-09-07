@@ -6,45 +6,36 @@ const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&lang
 
 async function getData () {
 
-    htmlContainer.classList.add("loader");
+    htmlContainer.innerHTML = `<div class="loader">Loading...</div>`;
 
     try {
 
     const response = await fetch(url);
     const json = await response.json();
+    const movies = json.results;
 
     htmlContainer.innerHTML= "";
 
-    console.log(json.results);
+    console.log(movies);
 
-        for (i = 0; i < books.length; i++) {
+        for (i = 0; i < movies.length; i++) {
 
-            let bookTitle = books[i].title;
-            let bookIsbn = books[i].primary_isbn13;
-            let publisher = books[i].publisher;
-            let description = books[i].description;
-            let author = books[i].author;
-            let image = books [i].book_image;
-            //add plus as space for the link so you ca get more from the author on details.html
-            let space = / /g;
-            let authorWithPlus = author.replace(space, "+");
+            let movieTitle = movies[i].title;
+            let releasedate = movies[i].release_date;
+            let summary = movies[i].overview;
+            let movieId = movies[i].id;
+            let rating = movies[i].vote_average;
 
-
-            htmlContainer.innerHTML += `<div class="bookContainer">
-                                        <div>
-                                        <h2>${bookTitle}</h2>
-                                        <img src="${image}" style="width:100%;" alt="${bookTitle}">
-                                        </div>
-                                        <div>
-                                        <a href = "details.html?author=${authorWithPlus}">Search for reviews</a>
-                                        <p><strong>Published by:</strong> ${publisher}</p>
-                                        <p><strong>Author:</strong> ${author}</p>
-                                        <p>${description}</p>
-                                        </div>
+            htmlContainer.innerHTML += `<div class="movieContainer">                            
+                                        <h2>${movieTitle}</h2>
+                                        <div>Rating: ${rating}</div>
+                                        <p>
+                                        <a href = "details.html?id=${movieId}">More details</a>
+                                        <p><strong>Release date:</strong> ${releasedate}</p>
+                                        </p>
+                                        <p>${summary}</p>
                                         </div>`;
-        
         }
-
     }
 
     catch (error) {
@@ -53,7 +44,6 @@ async function getData () {
                                     An error occured
                                     </div>`;
     }
-
 }
 
 getData();
