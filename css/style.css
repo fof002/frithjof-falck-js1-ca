@@ -71,3 +71,26 @@ h2 {
     transform: rotate(360deg);
   }
 }
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+    gap: 1em;
+    margin-top: 1em;
+  }
+   .submitButton {
+        width: fit-content;
+        padding: 0.3em 0.6em;
+    }
+
+.formError {
+    color:red;
+    display: none;
+}
+
+.formSuccess {
+display: none;
+color:green;
+
+}
+  

@@ -14,28 +14,10 @@ async function getData () {
     const json = await response.json();
     const movies = json.results;
 
-    htmlContainer.innerHTML= "";
-
     console.log(movies);
 
-        for (i = 0; i < movies.length; i++) {
-
-            let movieTitle = movies[i].title;
-            let releasedate = movies[i].release_date;
-            let summary = movies[i].overview;
-            let movieId = movies[i].id;
-            let rating = movies[i].vote_average;
-
-            htmlContainer.innerHTML += `<div class="movieContainer">                            
-                                        <h2>${movieTitle}</h2>
-                                        <div>Rating: ${rating}</div>
-                                        <p>
-                                        <a href = "details.html?id=${movieId}">More details</a>
-                                        <p><strong>Release date:</strong> ${releasedate}</p>
-                                        </p>
-                                        <p>${summary}</p>
-                                        </div>`;
-        }
+    renderMovie(movies)
+        
     }
 
     catch (error) {
@@ -47,3 +29,28 @@ async function getData () {
 }
 
 getData();
+
+function renderMovie(movies) {
+
+    htmlContainer.innerHTML= "";
+
+    for (i = 0; i < movies.length; i++) {
+
+        let movieTitle = movies[i].title;
+        let releasedate = movies[i].release_date;
+        let summary = movies[i].overview;
+        let movieId = movies[i].id;
+        let rating = movies[i].vote_average;
+
+        htmlContainer.innerHTML += `<div class="movieContainer">                            
+                                    <h2>${movieTitle}</h2>
+                                    <div>Rating: ${rating}</div>
+                                    <p>
+                                    <a href = "details.html?id=${movieId}">More details</a>
+                                    <p><strong>Release date:</strong> ${releasedate}</p>
+                                    </p>
+                                    <p>${summary}</p>
+                                    </div>`;
+    }
+
+}

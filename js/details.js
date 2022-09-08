@@ -22,32 +22,15 @@ async function getDetails () {
     const json = await response.json();
     const movies = json;
 
-    htmlContainer.innerHTML= "";
-
     console.log(movies);
 
-                let movieTitle = movies.title;
-                let releasedate = movies.release_date;
-                let summary = movies.overview;
-                let homePage = movies.homepage;
-                let rating = movies.vote_average;
-                let tagline = movies.tagline;
+    renderMovie(movies);
 
-                title.innerHTML = movieTitle;    
-
-            htmlContainer.innerHTML = `<div class="movieDetails">                            
-                                        <h2>${movieTitle}</h2>
-                                        <p style="font-style:italic;">-${tagline}</p>
-                                        <div>Rating: ${rating}</div>
-                                        <p>
-                                        <a href="${homePage}">${homePage}</a>
-                                        <p><strong>Release date:</strong> ${releasedate}</p>
-                                        </p>
-                                        <p>${summary}</p>
-                                        </div>`;
-        }
+    }
 
     catch (error) {
+
+        htmlContainer.innerHTML= "";
 
         htmlContainer.innerHTML += `<div class="error">
                                     An error occured
@@ -57,3 +40,29 @@ async function getDetails () {
 }
 
 getDetails();
+
+function renderMovie(movies) {
+
+    htmlContainer.innerHTML= "";
+
+    let movieTitle = movies.title;
+    let releasedate = movies.release_date;
+    let summary = movies.overview;
+    let homePage = movies.homepage;
+    let rating = movies.vote_average;
+    let tagline = movies.tagline;
+
+    title.innerHTML = movieTitle;    
+
+    htmlContainer.innerHTML = `<div class="movieDetails">                            
+                            <h2>${movieTitle}</h2>
+                            <p style="font-style:italic;">-${tagline}</p>
+                            <div>Rating: ${rating}</div>
+                            <p>
+                            <a href="${homePage}">${homePage}</a>
+                            <p><strong>Release date:</strong> ${releasedate}</p>
+                            </p>
+                            <p>${summary}</p>
+                            </div>`;
+
+}

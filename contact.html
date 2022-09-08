@@ -1,1 +1,48 @@
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Contact us</title>
+  </head>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+  <body>
+    <main>
+      <div class="formSuccess" id="formSuccess">Form passed Validation!</div>
+      <form action="post" id="contactForm">
+        <div>
+          <label for="name">Full name</label>
+          <input type="text" name="name" id="name" required="true" />
+        </div>
+        <div>
+          <label for="subject">Subject</label>
+          <input type="text" name="subject" id="subject" />
+          <div class="formError" id="subjectError">
+            You need at least 10 characters
+          </div>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" />
+          <div class="formError" id="emailError">Not a valid email adress</div>
+        </div>
+        <div>
+          <label for="adress">Adress</label>
+          <input type="text" name="adress" id="adress" />
+          <div class="formError" id="adressError">
+            You need at least 25 characters
+          </div>
+        </div>
+        <button type="submit" class="submitButton">Send</button>
+      </form>
+    </main>
+    <footer></footer>
+    <script src="js/contact.js"></script>
+  </body>
+</html>
